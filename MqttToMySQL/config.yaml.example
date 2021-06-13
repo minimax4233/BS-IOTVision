@@ -1,0 +1,10 @@
+# MySQL
+DBHost: "IP or domain"
+DBDatabase: ""
+DBUsername: ""
+DBPassword: ""
+# MQTT
+MQTTBroker : "IP"
+MQTTPort: 1883
+MQTTTopic: "topic"
+MQTTClientID: "python(MQTT-to-MySQL)"
