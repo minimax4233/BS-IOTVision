@@ -16,14 +16,18 @@ class StaticPagesController extends Controller
         return view('static_pages/signup');
     }
 
-    public function logim()
+    public function login()
     {
         return view('static_pages/login');
     }
 
-    public function show()
+    public function vision()
     {
-        return view('static_pages/show');
+        return view('static_pages/vision');
+    }
+    public function about()
+    {
+        return view('static_pages/about');
     }
 
 }
