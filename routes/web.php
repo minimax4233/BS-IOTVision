@@ -27,6 +27,7 @@ Route::post('/users', 'UsersController@store')->name('users.store'); // 创建�
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit'); // 编辑用户个人资料的页面
 Route::patch('/users/{user}', 'UsersController@update')->name('users.update'); // 更新用户
 Route::get('/users', 'UsersController@index')->name('users.index'); // 显示所有用户列表的页面
+Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy'); // 删除用户
 
 // 登录
 Route::get('login', 'SessionsController@create')->name('login'); // 显示登录页面
