@@ -24,6 +24,8 @@ Route::get('signup', 'UsersController@create')->name('signup'); // 创建用户�
 //Route::resource('users', 'UsersController');
 Route::get('/users/{user}', 'UsersController@show')->name('users.show'); //显示用户个人信息的页面
 Route::post('/users', 'UsersController@store')->name('users.store'); // 创建用户
+Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit'); // 编辑用户个人资料的页面
+Route::patch('/users/{user}', 'UsersController@update')->name('users.update'); // 更新用户
 
 // 登录
 Route::get('login', 'SessionsController@create')->name('login'); // 显示登录页面
