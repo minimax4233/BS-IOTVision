@@ -20,4 +20,5 @@ Route::get('/vision', 'StaticPagesController@vision')->name('vision');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
 Route::get('signup', 'UsersController@create')->name('signup');
+Route::resource('users', 'UsersController');
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
