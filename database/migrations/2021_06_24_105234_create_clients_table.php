@@ -17,6 +17,8 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->string('clientID')->index();
+            $table->string('clientName')->index();
+            $table->boolean('is_online')->index();
             $table->timestamps();
         });
     }
