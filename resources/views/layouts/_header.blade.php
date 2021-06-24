@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">物联网可视化</a>
+        <a class="navbar-brand" href="{{ route('home') }}">IOT-Vision</a>
         <ul class="navbar-nav justify-content-end">
             @if (Auth::check())
             <li class="nav-item"><a class="nav-link" href="{{ route('vision') }}">展示</a></li>
@@ -17,7 +17,7 @@
                         <form action="{{ route('logout') }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-block btn-danger" type="submit" name="button">登出</button>
+                            <button class="btn btn-outline-primary btn-outline-danger" type="submit" name="button">登出</button>
                         </form>
                     </a>
                 </div>
@@ -30,3 +30,4 @@
         </ul>
     </div>
 </nav>
+

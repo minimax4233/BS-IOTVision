@@ -14,7 +14,7 @@ class SessionsController extends Controller
             'only' => ['create']
         ]);
     }
-    
+
     public function create()
     {
         return view('sessions.create');
@@ -32,7 +32,7 @@ class SessionsController extends Controller
             $fallback = route('users.show', Auth::user());
             return redirect()->intended($fallback);
         } else {
-            session()->flash('danger', '很抱歉，您的邮箱或密码不正确');
+            session()->flash('danger', '很抱歉，您的邮箱或密码不正确！');
             return redirect()->back()->withInput();
         }
 
@@ -43,6 +43,6 @@ class SessionsController extends Controller
     {
         Auth::logout();
         session()->flash('success', '您已成功登出！');
-        return redirect('login');
+        return redirect()->route('home');
     }
 }
