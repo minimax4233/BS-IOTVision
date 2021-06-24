@@ -16,7 +16,7 @@ class CreateDatasTable extends Migration
         Schema::create('datas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('alert');
-            $table->string('clientID')->unique();;
+            $table->string('clientID');
             $table->string('info');
             $table->double('lat');
             $table->double('lng');
