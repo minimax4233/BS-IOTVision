@@ -15,10 +15,10 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
+            $table->integer('userID')->index();
             $table->string('clientID')->index();
-            $table->string('clientName')->index();
-            $table->boolean('is_online')->index();
+            $table->string('clientName');
+            $table->boolean('is_online');
             $table->timestamps();
         });
     }
