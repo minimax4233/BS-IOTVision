@@ -33,3 +33,11 @@ Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy')
 Route::get('login', 'SessionsController@showLogin')->name('login'); // 显示登录页面
 Route::post('login', 'SessionsController@doLogin')->name('login'); // 创建新会话（登录）
 Route::delete('logout', 'SessionsController@destroy')->name('logout'); // 销毁会话（退出登录）
+
+//客户端
+Route::get('/createClient', 'ClientsController@create')->name('clients.create');
+Route::post('/clients/{user}', 'ClientsController@store')->name('clients.store');
+Route::patch('/clients/{client}', 'ClientsController@update')->name('clients.update');
+Route::get('/clients/{client}', 'ClientsController@show')->name('clients.show'); 
+Route::get('/clientsList/{user}', 'ClientsController@index')->name('clients.index');
+Route::delete('/clients/{client}', 'ClientsController@destroy')->name('clients.destroy');
