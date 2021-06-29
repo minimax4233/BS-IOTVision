@@ -40,4 +40,6 @@ Route::post('/clients/{user}', 'ClientsController@store')->name('clients.store')
 Route::patch('/clients/{client}', 'ClientsController@update')->name('clients.update');
 Route::get('/clients/{client}', 'ClientsController@show')->name('clients.show'); 
 Route::get('/clientsList/{user}', 'ClientsController@index')->name('clients.index');
-Route::delete('/clients/{client}', 'ClientsController@destroy')->name('clients.destroy');
+Route::delete('/clients/{user}/{client}', 'ClientsController@destroy')->name('clients.destroy');
+Route::get('/clients/{client}/edit', 'ClientsController@edit')->name('clients.edit'); 
+Route::patch('/clients/{client}', 'ClientsController@update')->name('clients.update');

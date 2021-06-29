@@ -40,8 +40,9 @@ class UserPolicy
         return $currentUser->is_admin;
     }
 
-    public function destroyClient(User $currentUser, Client $client)
+    public function destroyClient(Client $client, User $user)
     {
-        return $client->user_id == $currentUser->id;
+        return $client->user_id === $user->id;
     }
+
 }

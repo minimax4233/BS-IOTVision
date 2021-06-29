@@ -9,6 +9,7 @@
                 <section class="user_info">
                     @include('clients._client_info', ['client' => $client])
                 </section>
+                <a class="btn btn-lg btn-outline-success" href="{{ route('clients.edit', $client) }}" role="button">修改</a>
             </div>
         </div>
     </div>
