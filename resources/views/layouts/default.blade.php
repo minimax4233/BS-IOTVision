@@ -4,6 +4,7 @@
 <head>
   <title>@yield('title', 'IOT-Vision') - IOT-Vision</title>
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+  @yield('headContext')
 </head>
 
 <body>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ChartJsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +43,10 @@ Route::get('/clientsList/{user}', 'ClientsController@index')->name('clients.inde
 Route::delete('/clients/{user}/{client}', 'ClientsController@destroy')->name('clients.destroy');
 Route::get('/clients/{client}/edit', 'ClientsController@edit')->name('clients.edit'); 
 Route::patch('/clients/{client}', 'ClientsController@update')->name('clients.update');
+
+//chartjs
+Route::get('/charts/view', 'ChartJsController@index')->name('chartjs.index');
+Route::get('/selfCientStat', 'ChartJsController@selfCientStat')->name('chartjs.selfCientStat');
+Route::get('/allCientStat', 'ChartJsController@allCientStat')->name('chartjs.allCientStat');
+Route::get('/clientStat', 'ChartJsController@clientStat')->name('chartjs.clientStat');
+Route::get('/dataStat', 'ChartJsController@dataStat')->name('chartjs.dataStat');
