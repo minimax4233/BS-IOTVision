@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                     <label for="account">名称或邮箱：</label>
-                    <input type="text" name="account" class="form-control" value="{{ old('name') }}">
+                    <input type="text" name="account" class="form-control" value="{{ old('account') }}">
                 </div>
 
                 <div class="form-group">

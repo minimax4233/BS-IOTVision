@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth', [            
-            'except' => ['show', 'create', 'store', 'index']
+            'except' => ['create']
         ]);
 
         $this->middleware('guest', [
@@ -22,6 +22,7 @@ class UsersController extends Controller
 
     public function index()
     {
+        $this->authorize('adminOnly', Auth::user());
         $users = User::paginate(6);
         return view('users.index', compact('users'));
     }
@@ -33,7 +34,9 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $this->authorize('update', $user);
+        $clients = $user->clients()->orderBy('created_at', 'desc')->paginate(10);
+        return view('users.show', compact('user', 'clients'));
     }
     public function store(Request $request)
     {
@@ -89,5 +92,7 @@ class UsersController extends Controller
         session()->flash('success', '成功删除用户！');
         return back();
     }
+
+    
 
 }
