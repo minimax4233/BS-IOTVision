@@ -52,3 +52,4 @@ Route::get('/clientStat', 'ChartJsController@clientStat')->name('chartjs.clientS
 Route::get('/dataStat', 'ChartJsController@dataStat')->name('chartjs.dataStat');
 
 Route::get('/charts/map', 'ChartJsController@map')->name('chartjs.map');
+Route::get('/clientData', 'ChartJsController@clientData')->name('chartjs.clientData');
