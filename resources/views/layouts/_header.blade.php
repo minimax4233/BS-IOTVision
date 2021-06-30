@@ -3,7 +3,7 @@
         <a class="navbar-brand" href="{{ route('home') }}">IOT-Vision</a>
         <ul class="navbar-nav justify-content-end">
             @if (Auth::check())
-            <li class="nav-item"><a class="nav-link" href="{{ route('chartjs.index') }}">展示</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('chartjs.index') }}">统计信息</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('clients.create', Auth::user()) }}">创建客户端</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('clients.index', Auth::user()) }}">客户端列表</a></li>
             @can('adminOnly', Auth::user())

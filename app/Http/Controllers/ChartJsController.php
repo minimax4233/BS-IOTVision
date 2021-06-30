@@ -27,7 +27,7 @@ class ChartJsController extends Controller
         //array_push($my_data, Client::where('is_online', '=', 0)->count());
         return json_encode($statData);
     }
-    
+
     public function allCientStat()
     {
         $statData = array();
@@ -53,15 +53,35 @@ class ChartJsController extends Controller
 
     public function dataStat()
     {
-        $statData = array();
-        
-        //print_r(Client::where('user_id', '=', Auth::user()->id)->where('is_online', '=', 1)->count());
-        array_push($statData, Data::where('user_id', '=', Auth::user()->id)->where('is_online', '=', 1)->count());
-        array_push($statData, Client::where('user_id', '=', Auth::user()->id)->where('is_online', '=', 0)->count());
-        array_push($statData, Client::where('is_online', '=', 1)->count());
-        array_push($statData, Client::where('is_online', '=', 0)->count());
-        array_push($statData, Client::where('clientID', '!=', NULL)->count());
-        return json_encode($statData);
+        $sendData = array();
+        $user = Auth::user();
+        $clients = Client::where('user_id', '=', Auth::user()->id)->get();
+        $arrID = array();
+        $arrData = array();
+        foreach ($clients as $client) {
+            //$clientData = array();
+            //print_r($client['clientID']);
+            //print_r(", ");
+            array_push($arrID, $client['clientID']);
+            $dbData = DB::table('datas')->where('clientID', '=', $client['clientID'])->count();
+            array_push($arrData, $dbData);
+        }
+        array_push($sendData, $arrID);
+        array_push($sendData, $arrData);
+        //print_r($sendData);
+        //print_r("-------------------------------------------------");
+        //print_r($sendData[0][0]);
+        //print_r("-------------------------------------------------");
+        //print_r($sendData[0][1]);
+        //print_r("-------------------------------------------------");
+
+
+
+        //array_push($statData, Data::where('user_id', '=', Auth::user()->id)->where('is_online', '=', 1)->count());
+        //array_push($statData, Client::where('user_id', '=', Auth::user()->id)->where('is_online', '=', 0)->count());
+        //array_push($statData, Client::where('is_online', '=', 1)->count());
+        //array_push($statData, Client::where('is_online', '=', 0)->count());
+        //array_push($statData, Client::where('clientID', '!=', NULL)->count());
+        return json_encode($sendData);
     }
 }
-

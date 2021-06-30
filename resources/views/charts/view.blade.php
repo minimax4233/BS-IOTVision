@@ -8,22 +8,25 @@
 
 @section('content')
 
-<div class="chart-container">
-    <div class="pie-chart-container">
-        <canvas id="selfCientStatChart" width="300" height="300"></canvas>
+<div class="allChartContainer">
+    <div class="chartContainer" style="position: relative; height: 50vh; width: 50vh; display: inline-block;">
+        <canvas id="selfCientStatChart"></canvas>
     </div>
-    <div class="pie-chart-container">
-        <canvas id="allCientStatChart" width="300" height="300"></canvas>
+    <div class="chartContainer" style="position: relative; height: 50vh; width: 50vh; display: inline-block;">
+        <canvas id="allCientStatChart"></canvas>
     </div>
-    <div class="pie-chart-container">
-        <canvas id="clientStatChart" width="300" height="300"></canvas>
+    <div class="chartContainer" style="position: relative;">
+        <canvas id="clientStatChart"></canvas>
     </div>
-    <div class="pie-chart-container">
-        <canvas id="dataStat" width="300" height="300"></canvas>
+    <div class="chartContainer" style="position: relative;">
+        <canvas id="dataStat"></canvas>
     </div>
 </div>
 
+
 <script>
+
+
     window.chartColors = {
         red: 'rgb(255, 99, 132)',
         orange: 'rgb(255, 159, 64)',
@@ -104,14 +107,6 @@
     $.get('/clientStat', function(data, status) {
         var ctx = document.getElementById("clientStatChart").getContext("2d");
         var parseData = JSON.parse(data);
-        //var selfData = parseData.slice(0,2);
-        //var allData = parseData.slice(2,4);
-        //var all = parseData.slice(4,5);
-        //console.log(data);
-        //console.log(selfData);
-        //console.log(allData);
-        //console.log(all);
-        //console.log(parseData[5]);
         var my_chart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -151,22 +146,21 @@
     $.get('/dataStat', function(data, status) {
         var ctx = document.getElementById("dataStat").getContext("2d");
         var parseData = JSON.parse(data);
-        //console.log(data);
+        console.log(parseData);
         var my_chart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: [
-                    "在线客户端",
-                    "离线客户端"
-                ],
+                labels: parseData[0],
                 datasets: [{
-                    data: parseData,
+                    label: '数量',
+                    data: parseData[1],
                     backgroundColor: [
-                        window.chartColors.blue,
-                        window.chartColors.red,
-                        window.chartColors.orange,
+                        window.chartColors.purple,
                         window.chartColors.green,
-                        window.chartColors.grey
+                        window.chartColors.orange,
+                        window.chartColors.red,
+                        window.chartColors.blue,
+                        window.chartColors.yellow
                     ],
                     hoverOffset: 4
                 }]
@@ -176,13 +170,12 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: '全网客户端在线情況'
+                        text: '客户端接收数据量'
                     }
                 }
             }
         });
     });
-
 </script>
 
 
