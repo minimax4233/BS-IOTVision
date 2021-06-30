@@ -84,4 +84,9 @@ class ChartJsController extends Controller
         //array_push($statData, Client::where('clientID', '!=', NULL)->count());
         return json_encode($sendData);
     }
+
+    public function map()
+    {
+        return view('charts.map');
+    }
 }

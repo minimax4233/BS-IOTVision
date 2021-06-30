@@ -50,3 +50,5 @@ Route::get('/selfCientStat', 'ChartJsController@selfCientStat')->name('chartjs.s
 Route::get('/allCientStat', 'ChartJsController@allCientStat')->name('chartjs.allCientStat');
 Route::get('/clientStat', 'ChartJsController@clientStat')->name('chartjs.clientStat');
 Route::get('/dataStat', 'ChartJsController@dataStat')->name('chartjs.dataStat');
+
+Route::get('/charts/map', 'ChartJsController@map')->name('chartjs.map');
