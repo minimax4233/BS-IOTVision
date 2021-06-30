@@ -20,13 +20,25 @@
         }
 
         #mapcontainer {
-            height: 100%
+            height: 68%
         }
+
+        .BMap_cpyCtrl {
+            display: none;
+        }
+
+        /*
+        .anchorBL {
+            display: none;
+        }*/
     </style>
 </head>
 
 <body>
     @include('layouts._header')
+    <div class="alert alert-primary" role="alert">
+        红色图钉表示客户端状态正常，橙色图钉图钉表示客户端状态告警，地图可以拖动，点击图标可以查看客户端信息。
+    </div>
     <div id="mapcontainer"></div>
     <script type="text/javascript">
         var map = new BMapGL.Map("mapcontainer");
@@ -34,7 +46,7 @@
         map.centerAndZoom(new BMapGL.Point(120.140771, 30.297433), 11); // 初始化地图，设置中心点坐标和地图级别 
         map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
 
-        function addpoint(x, y, title, info) {
+        function addpoint(x, y, title, info, alert) {
 
 
             //var x = parseData[0];
@@ -42,7 +54,15 @@
             //var x = 119.96154621839524;
             //var y = 30.280080199241638;
             var point = new BMapGL.Point(x, y);
-            var marker = new BMapGL.Marker(point); // 创建标注
+            var myIcon = new BMapGL.Icon("{{ URL::asset('images/markers.png') }}", new BMapGL.Size(20, 25));
+            if (alert) {
+                var marker = new BMapGL.Marker(point, {
+                    icon: myIcon
+                });
+            } else {
+                var marker = new BMapGL.Marker(point);
+            }
+            // 创建标注
             map.addOverlay(marker); // 将标注添加到地图中
             var opts = {
                 width: 200, // 信息窗口宽度
@@ -58,25 +78,26 @@
 
         $.get('/clientData', function(data, status) {
             var parseData = JSON.parse(data);
-            
-            for( var i in parseData ){
-                console.log(i);
+
+            for (var i in parseData) {
+                //console.log(i);
                 var clientID = parseData[i][0];
                 var points = parseData[i][1];
-                console.log(clientID);
-                for(var j in points){
+                //console.log(clientID);
+                for (var j in points) {
                     point = points[j];
-                    var info = "信息：" + point[2] +"<br>发送值："　+ point[4]  + "<br>状态："+(point[5]?"告警":"正常");
-
-                    addpoint(point[0], point[1],clientID, info);
-                    console.log(point[0], point[1],clientID, info);
+                    var info = "信息：" + point[2] + "<br>发送值：" + point[4] + "<br>状态：" + (point[3] ? "告警" : "正常");
+                    //if(point[5])
+                    addpoint(point[0], point[1], clientID, info, point[3]);
+                    console.log(point[0], point[1], clientID, info);
                 }
             }
-            
-            
-            //console.log(parseData[0][1]);
-            
-        });
 
+
+            //console.log(parseData[0][1]);
+
+        });
     </script>
+
+    @include('layouts._footer')
 </body>

@@ -15,10 +15,10 @@
     <div class="chartContainer" style="position: relative; height: 50vh; width: 50vh; display: inline-block;">
         <canvas id="allCientStatChart"></canvas>
     </div>
-    <div class="chartContainer" style="position: relative;">
+    <div class="chartContainer">
         <canvas id="clientStatChart"></canvas>
     </div>
-    <div class="chartContainer" style="position: relative;">
+    <div class="chartContainer" >
         <canvas id="dataStat"></canvas>
     </div>
 </div>
