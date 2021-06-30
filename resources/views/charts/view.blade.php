@@ -148,7 +148,7 @@
         var parseData = JSON.parse(data);
         console.log(parseData);
         var my_chart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: parseData[0],
                 datasets: [{

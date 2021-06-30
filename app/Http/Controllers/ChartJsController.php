@@ -13,6 +13,15 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class ChartJsController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth', [
+            'except' => []
+        ]);
+    }
+
     public function index()
     {
         return view('charts.view');
