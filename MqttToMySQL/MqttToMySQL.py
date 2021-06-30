@@ -39,7 +39,7 @@ def insertDataToDB(data):
                 lng = jsonData["lng"]
                 timestamp = jsonData["timestamp"]
                 value = jsonData["value"]
-            sql = "INSERT INTO `data` (`alert`, `clientId`, `info`, `lat`, `lng`, `timestamp`, `value`) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            sql = "INSERT INTO `datas` (`alert`, `clientId`, `info`, `lat`, `lng`, `timestamp`, `value`) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             cursor.execute(sql, (alert, clientId, info[12:], lat, lng, timestamp, value))
         print("[INFO] Successfully Stored in Database!")
         connection.commit()
