@@ -15,7 +15,7 @@ class ClientsController extends Controller
     {
 
         $this->middleware('auth', [
-            'except' => []
+            'except' => ['create', 'store']
         ]);
     }
 
@@ -104,7 +104,7 @@ class ClientsController extends Controller
         $data['clientID'] = $request->clientID;
         $client->update($data);
 
-        session()->flash('success', '个人资料更新成功！');
+        session()->flash('success', '客户端资料更新成功！');
 
         return redirect()->route('clients.show', $client);
     }
