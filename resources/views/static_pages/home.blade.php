@@ -12,7 +12,7 @@
     <hr class="my-4">
     <p>
         <a class="btn btn-lg btn-outline-primary" href="{{ route('signup') }}" role="button">马上注册</a>&#12288;
-        <a class="btn btn-lg btn-outline-success" href="{{ route('signup') }}" role="button">登录系统</a>
+        <a class="btn btn-lg btn-outline-success" href="{{ route('login') }}" role="button">登录系统</a>
     </p>
 </div>
 @stop
