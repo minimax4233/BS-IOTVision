@@ -1,5 +1,5 @@
-# BS - IOT-Vision
-ZJU - 2020/2021 B/S软件体系技术 大作业
+# B/S - IOT-Vision
+ZJU - 2020/2021 B/S 软件体系技术 大作业
 
 ## 目的
 任选Web开发技术实现一个物联网应用的网站
@@ -18,12 +18,13 @@ ZJU - 2020/2021 B/S软件体系技术 大作业
 7.	样式适配手机端，能够在手机浏览器/微信等应用内置的浏览器中友好显示。
 为了提交作业方便，项目使用的数据库，建议使用mysql或mangodb，提交作业时同时附带建库建表脚本文件。
 
+# 使用
 
-# MqttToMySQL
+## MqttToMySQL
 
 复制 `config.yaml.example` 成 `config.yaml`，按照实际环境修改。
 
-# WEB
+## WEB
 
 按照环境修改`.env`配置。
 网站使用了Laravel 8, Bootstrap, vue.js, chart.js。
